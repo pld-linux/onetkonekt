@@ -4,7 +4,7 @@ Summary(pl):	Proxy IRC -> Onet Czat
 Name:		onetkonekt
 Version:	1.0
 Release:	0.1
-License:	Beerware
+License:	Beerware, not distributable
 Group:		Applications/Communications
 Source0:	%{name}-%{version}.tar.gz
 # NoSource0-md5:	0f759d99d3dd22cae8e8434895ecbe03
