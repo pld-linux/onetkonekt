@@ -1,5 +1,6 @@
+%include	/usr/lib/rpm/macros.perl
 Summary:	IRC -> Onet Czat proxy
-Summary(pl):	IRC -> Onet Czat proxy
+Summary(pl):	Proxy IRC -> Onet Czat
 Name:		onetkonekt
 Version:	0.3
 Release:	0.1
@@ -7,9 +8,10 @@ License:	Beerware
 Group:		Applications/Communications
 Source0:	http://krzynio.hakore.com/%{name}-%{version}.tar.gz
 # Source0-md5:	a7ee88ddbfb117106c0a8e023168bb2e
-URL:		http://onetkonekt.apcoh.org
+URL:		http://onetkonekt.apcoh.org/
+BuildRequires:	perl-modules
+BuildRequires:	rpm-perlprov
 PreReq:		rc-scripts
-Requires:	perl-modules
 Requires(post,preun):	/sbin/chkconfig
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -23,36 +25,39 @@ Dziêki temu programowi mo¿na podrywaæ cziki na czacie Onetu, u¿ywaj±c
 swojego ulubionego klienta IRC.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT/etc/sysconfig/
-install -d $RPM_BUILD_ROOT/etc/rc.d/init.d/
-install -d $RPM_BUILD_ROOT%{_sysconfdir}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir},/etc/{sysconfig,rc.d/init.d}}
 
 install onetkonekt.pl $RPM_BUILD_ROOT%{_bindir}/onetkonekt.pl
 install onet $RPM_BUILD_ROOT/etc/sysconfig/onet
 install onet.conf $RPM_BUILD_ROOT%{_sysconfdir}/onet.conf
 install onet.rc $RPM_BUILD_ROOT/etc/rc.d/init.d/onet
 
-%files
-%defattr(644,root,root,755)
-%attr(755,root,root)%{_bindir}/onetkonekt.pl
-%attr(754,root,root) /etc/rc.d/init.d/onet
-%defattr(644,root,root,755)
-%config(noreplace) /etc/sysconfig/onet
-%config(noreplace) %{_sysconfdir}/onet.conf
-
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
 /sbin/chkconfig --add onet
-echo "Run \"/etc/rc.d/init.d/onet start\" to start onet daemon."
+if [ -f /var/lock/subsys/onet ]; then
+	/etc/rc.d/init.d/onet restart >&2
+else
+	echo "Run \"/etc/rc.d/init.d/onet start\" to start onet daemon."
+fi
 
 %preun
-/sbin/chkconfig --del onet
+if [ "$1" = "0" ]; then
+	if [ -f /var/lock/subsys/onet ]; then
+		/etc/rc.d/init.d/onet stop >&2
+	fi
+	/sbin/chkconfig --del onet
+fi
+
+%files
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/onetkonekt.pl
+%attr(754,root,root) /etc/rc.d/init.d/onet
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/onet
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/onet.conf
