@@ -6,7 +6,7 @@ Version:	1.0
 Release:	0.1
 License:	Beerware
 Group:		Applications/Communications
-Source0:	onetkonekt-1.0.tar.gz
+Source0:	%{name}-%{version}.tar.gz
 # NoSource0-md5:	0f759d99d3dd22cae8e8434895ecbe03
 URL:		http://onetkonekt.apcoh.org/
 NoSource:       0
