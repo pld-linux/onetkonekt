@@ -2,12 +2,12 @@
 Summary:	IRC -> Onet Czat proxy
 Summary(pl):	Proxy IRC -> Onet Czat
 Name:		onetkonekt
-Version:	0.3
+Version:	1.0
 Release:	0.1
 License:	Beerware
 Group:		Applications/Communications
-Source0:	http://krzynio.hakore.com/%{name}-%{version}.tar.gz
-# Source0-md5:	a7ee88ddbfb117106c0a8e023168bb2e
+Source0:	http://pld.toster.org/%{name}-%{version}.tar.gz
+# Source0-md5:	0f759d99d3dd22cae8e8434895ecbe03
 URL:		http://onetkonekt.apcoh.org/
 BuildRequires:	perl-modules
 BuildRequires:	rpm-perlprov
