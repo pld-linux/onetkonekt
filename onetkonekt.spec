@@ -22,7 +22,7 @@ Thanks to onetkonekt you can pick up chicks on Onet Czat servers using
 your favourite IRC client.
 
 %description -l pl
-Dziêki temu programowi mo¿na podrywaæ cziki na czacie Onetu, u¿ywaj±c
+Dziêki temu programowi mo¿na podrywaæ laski na czacie Onetu, u¿ywaj±c
 swojego ulubionego klienta IRC.
 
 %prep
