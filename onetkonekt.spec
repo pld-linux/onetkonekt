@@ -9,11 +9,11 @@ Group:		Applications/Communications
 Source0:	%{name}-%{version}.tar.gz
 # NoSource0-md5:	0f759d99d3dd22cae8e8434895ecbe03
 URL:		http://onetkonekt.apcoh.org/
-NoSource:       0
+NoSource:	0
 BuildRequires:	perl-modules
 BuildRequires:	rpm-perlprov
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -60,5 +60,5 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/onetkonekt.pl
 %attr(754,root,root) /etc/rc.d/init.d/onet
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/onet
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/onet.conf
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/onet
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/onet.conf
