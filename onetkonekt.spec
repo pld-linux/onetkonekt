@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	IRC -> Onet Czat proxy
-Summary(pl):	Proxy IRC -> Onet Czat
+Summary(pl.UTF-8):   Proxy IRC -> Onet Czat
 Name:		onetkonekt
 Version:	1.0
 Release:	0.1
@@ -21,8 +21,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Thanks to onetkonekt you can pick up chicks on Onet Czat servers using
 your favourite IRC client.
 
-%description -l pl
-Dziêki temu programowi mo¿na podrywaæ laski na czacie Onetu, u¿ywaj±c
+%description -l pl.UTF-8
+DziÄ™ki temu programowi moÅ¼na podrywaÄ‡ laski na czacie Onetu, uÅ¼ywajÄ…c
 swojego ulubionego klienta IRC.
 
 %prep
