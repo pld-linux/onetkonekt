@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	IRC -> Onet Czat proxy
-Summary(pl.UTF-8):   Proxy IRC -> Onet Czat
+Summary(pl.UTF-8):	Proxy IRC -> Onet Czat
 Name:		onetkonekt
 Version:	1.0
 Release:	0.1
